@@ -9,6 +9,105 @@
         http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd"
        default-init-method="init" default-destroy-method="destroy">
 
+    <bean id="sonya" class="com.kondratsenko.model.Cat">
+        <constructor-arg name="id" value="1"/>
+        <constructor-arg name="name" value="Sonya"/>
+        <constructor-arg name="age" value="4"/>
+        <constructor-arg name="weight" value="2" />
+        <constructor-arg name="length" value="25"/>
+        <constructor-arg name="foodCat">
+            <list>
+                <value>fish</value>
+                <value>meat</value>
+                <value>bird</value>
+            </list>
+        </constructor-arg>
+    </bean>
 
+    <bean id="tom" class="com.kondratsenko.model.Cat">
+        <property name="id" value="2"/>
+        <property name="name" value="Tom"/>
+        <property name="age" value="6"/>
+        <property name="weight" value="3"/>
+        <property name="length" value="30"/>
+        <property name="foodCat" ref="food_tom_list"/>
+    </bean>
+    <util:list id="food_tom_list">
+        <value>Hill's Science</value>
+        <value>Optimeal</value>
+        <value>BrooksField Low</value>
+    </util:list>
+
+    <bean id="atos" class="com.kondratsenko.model.Cat" c:_0="3" c:_1="Atos" c:_2="5" c:_3="5" c:_4="35">
+        <constructor-arg name="foodCat">
+            <list>
+                <value>Nature's Protection</value>
+                <value>Winner</value>
+                <value>Trainer Natural</value>
+            </list>
+        </constructor-arg>
+    </bean>
+
+    <bean id="elay" class="com.kondratsenko.model.Dog" p:id="1" p:name="Elay" p:age="7" p:weight="10" p:height="70">
+        <property name="locationAndPriceDog">
+            <map>
+                <entry key="Gomel" value="120"/>
+                <entry key="Minsk" value="350"/>
+                <entry key="Braslav" value="455"/>
+            </map>
+        </property>
+    </bean>
+
+    <bean id="enda" class="com.kondratsenko.model.Dog">
+        <constructor-arg name="id" value="2" />
+        <constructor-arg name="name" value="Enda"/>
+        <constructor-arg name="age" value="9" />
+        <constructor-arg name="weight" value="15"/>
+        <constructor-arg name="height" value="90"/>
+        <constructor-arg name="locationAndPriceDog">
+            <map>
+                <entry key="Vitebsk" value="120"/>
+                <entry key="Minsk" value="360"/>
+                <entry key="Moscow" value="455"/>
+            </map>
+        </constructor-arg>
+    </bean>
+
+    <bean id="bruno" class="com.kondratsenko.model.Dog" p:id="3" p:name="Bruno" p:age="8" p:weight="13" p:height="85">
+        <property name="locationAndPriceDog">
+            <map>
+                <entry key="Moscow" value="120"/>
+                <entry key="Minsk" value="350"/>
+                <entry key="Peterburg" value="460"/>
+            </map>
+        </property>
+    </bean>
+
+    <bean id="jumbo" class="com.kondratsenko.model.Elephant" p:id="1" p:name="Jumbo" p:age="25" p:weight="1200" p:width="250">
+        <property name="zooElephant">
+            <set>
+                <value>London Zoo</value>
+                <value>Prague Zoo</value>
+                <value>Berlin Zoo</value>
+            </set>
+        </property>
+    </bean>
+
+    <bean id="zoo" class="com.kondratsenko.model.Zoo" p:id="1" p:name="myZoo">
+        <property name="catList">
+            <util:list>
+                <ref bean="sonya"/>
+                <ref bean="tom"/>
+                <ref bean="atos"/>
+            </util:list>
+        </property>
+        <property name="dogList">
+            <util:list>
+                <ref bean="elay"/>
+                <ref bean="enda"/>
+                <ref bean="bruno"/>
+            </util:list>
+        </property>
+    </bean>
 
 </beans>

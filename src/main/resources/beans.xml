@@ -93,21 +93,21 @@
         </property>
     </bean>
 
-    <bean id="zoo" class="com.kondratsenko.model.Zoo" p:id="1" p:name="myZoo">
-        <property name="catList">
+    <bean id="zoo" class="com.kondratsenko.model.Zoo" c:_0="1" c:_1="myZoo" c:_4-ref="jumbo" init-method="start" destroy-method="finish">
+        <constructor-arg name="catList">
             <util:list>
                 <ref bean="sonya"/>
                 <ref bean="tom"/>
                 <ref bean="atos"/>
             </util:list>
-        </property>
-        <property name="dogList">
+        </constructor-arg>
+        <constructor-arg name="dogList">
             <util:list>
                 <ref bean="elay"/>
                 <ref bean="enda"/>
                 <ref bean="bruno"/>
             </util:list>
-        </property>
+        </constructor-arg>
     </bean>
 
 </beans>

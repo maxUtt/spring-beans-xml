@@ -15,14 +15,14 @@ public class Zoo implements Printable{
     private String name;
     private List<Cat> catList;
     private List<Dog> dogList;
-    private Elephant elephant;
+    private Elephant katy;
 
     @Override
     public String toString() {
         return "Zoo " + "id=" + id + ", name='" + name + '\'' +
                 "\ncatList=" + catList +
                 "\ndogList=" + dogList +
-                "\nelephant=" + elephant +
+                "\nelephant=" + katy +
                 '}';
     }
 

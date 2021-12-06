@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:c="http://www.springframework.org/schema/c"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd"
+       default-init-method="init" default-destroy-method="destroy">
+
+    <context:property-placeholder location="cats.properties, dogs.properties, elephant.properties"/>
+
+    <bean id="sonya" class="com.kondratsenko.model.Cat">
+        <constructor-arg name="id" value="${sonya.id}"/>
+        <constructor-arg name="name" value="${sonya.name}"/>
+        <constructor-arg name="age" value="${sonya.age}"/>
+        <constructor-arg name="weight" value="${sonya.weight}" />
+        <constructor-arg name="length" value="${sonya.length}"/>
+        <constructor-arg name="foodCat" value="${sonya.foodCat}"/>
+    </bean>
+
+
+    <bean id="tom" class="com.kondratsenko.model.Cat">
+        <property name="id" value="${tom.id}"/>
+        <property name="name" value="${tom.name}"/>
+        <property name="age" value="${tom.age}"/>
+        <property name="weight" value="${tom.weight}"/>
+        <property name="length" value="${tom.length}"/>
+        <property name="foodCat" value="${tom.foodCat}"/>
+    </bean>
+
+    <bean id="atos" class="com.kondratsenko.model.Cat">
+        <constructor-arg name="id" value="${atos.id}" />
+        <constructor-arg name="name" value="${atos.name}"/>
+        <constructor-arg name="age" value="${atos.age}"/>
+        <constructor-arg name="weight" value="${atos.weight}"/>
+        <constructor-arg name="length" value="${atos.length}"/>
+        <constructor-arg name="foodCat" value="${atos.foodCat}"/>
+    </bean>
+
+    <bean id="elay" class="com.kondratsenko.model.Dog">
+        <property name="id" value="${elay.id}"/>
+        <property name="name" value="${elay.name}"/>
+        <property name="age" value="${elay.age}"/>
+        <property name="weight" value="${elay.weight}"/>
+        <property name="height" value="${elay.height}"/>
+        <property name="locationAndPriceDog" value="#{${elay.locationAndPriceDog}}"/>
+    </bean>
+
+    <bean id="enda" class="com.kondratsenko.model.Dog" c:_0="${enda.id}" c:_1="${enda.name}" c:_2="${enda.age}" c:_3="${enda.weight}" c:_4="${enda.height}"
+          c:_5="#{${enda.locationAndPriceDog}}"/>
+
+    <bean id="bruno" class="com.kondratsenko.model.Dog" p:id="${bruno.id}" p:name="${bruno.name}" p:age="${bruno.age}" p:weight="${bruno.weight}"
+          p:height="${bruno.height}" p:locationAndPriceDog="#{${bruno.locationAndPriceDog}}"/>
+
+
+    <bean id="jumbo" class="com.kondratsenko.model.Elephant" p:id="${jumbo.id}" p:name="${jumbo.name}" p:age="${jumbo.age}" p:weight="${jumbo.weight}"
+          p:width="${jumbo.width}" p:zooElephant="${jumbo.zooElephant}"/>
+
+    <bean id="katy" class="com.kondratsenko.model.Elephant" p:id="${katy.id}" p:name="${katy.name}" p:age="${katy.age}" p:weight="${katy.weight}"
+          p:width="${katy.width}" p:zooElephant="${katy.zooElephant}"/>
+
+    <bean id="zoo" class="com.kondratsenko.model.Zoo" p:id="1" p:name="myZoo" autowire="byName" init-method="start" destroy-method="finish">
+        <property name="catList">
+            <util:list>
+                <ref bean="sonya"/>
+                <ref bean="tom"/>
+                <ref bean="atos"/>
+            </util:list>
+        </property>
+        <property name="dogList">
+            <util:list>
+                <ref bean="elay"/>
+                <ref bean="enda"/>
+                <ref bean="bruno"/>
+            </util:list>
+        </property>
+    </bean>
+
+</beans>

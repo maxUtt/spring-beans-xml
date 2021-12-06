@@ -21,4 +21,11 @@ public class Elephant extends Animal{
         this.width = width;
         this.zooElephant = zooElephant;
     }
+    public void init(){
+        System.out.println("Elephant " + name + " start eating");
+    }
+
+    public void destroy(){
+        System.out.println("Elephant " + name + " end eating");
+    }
 }

@@ -11,10 +11,10 @@
 
     <bean id="sonya" class="com.kondratsenko.model.Cat">
         <constructor-arg name="id" value="1"/>
-        <constructor-arg name="name" value="Sonya"/>
+        <constructor-arg name="name" value="#{new java.lang.String('Sonay')}"/>
         <constructor-arg name="age" value="4"/>
-        <constructor-arg name="weight" value="2" />
-        <constructor-arg name="length" value="25"/>
+        <constructor-arg name="weight" value="#{tom.id + elay.id}" />
+        <constructor-arg name="length" value="#{new java.util.Random().nextInt(20,30)}"/>
         <constructor-arg name="foodCat">
             <list>
                 <value>fish</value>
@@ -26,10 +26,10 @@
 
     <bean id="tom" class="com.kondratsenko.model.Cat">
         <property name="id" value="2"/>
-        <property name="name" value="Tom"/>
+        <property name="name" value="#{new java.lang.String('Tom')}"/>
         <property name="age" value="6"/>
         <property name="weight" value="3"/>
-        <property name="length" value="30"/>
+        <property name="length" value="#{new java.util.Random().nextInt(30,40)}"/>
         <property name="foodCat" ref="food_tom_list"/>
     </bean>
     <util:list id="food_tom_list">
@@ -38,7 +38,7 @@
         <value>BrooksField Low</value>
     </util:list>
 
-    <bean id="atos" class="com.kondratsenko.model.Cat" c:_0="3" c:_1="Atos" c:_2="5" c:_3="5" c:_4="35">
+    <bean id="atos" class="com.kondratsenko.model.Cat" c:_0="3" c:_1="#{new java.lang.String('Atos')}" c:_2="5" c:_3="5" c:_4="35">
         <constructor-arg name="foodCat">
             <list>
                 <value>Nature's Protection</value>
@@ -48,32 +48,32 @@
         </constructor-arg>
     </bean>
 
-    <bean id="elay" class="com.kondratsenko.model.Dog" p:id="1" p:name="Elay" p:age="7" p:weight="10" p:height="70">
+    <bean id="elay" class="com.kondratsenko.model.Dog" p:id="1" p:name="#{new String('Elay')}" p:age="7" p:weight="10" p:height="70">
         <property name="locationAndPriceDog">
             <map>
-                <entry key="Gomel" value="120"/>
-                <entry key="Minsk" value="350"/>
-                <entry key="Braslav" value="455"/>
+                <entry key="Gomel" value="#{T(Math).round(T(Math).pow(10,2))}"/>
+                <entry key="Minsk" value="#{T(Math).round(T(Math).pow(20,2))}"/>
+                <entry key="Braslav" value="#{T(Math).floor(455.56)}"/>
             </map>
         </property>
     </bean>
 
     <bean id="enda" class="com.kondratsenko.model.Dog">
         <constructor-arg name="id" value="2" />
-        <constructor-arg name="name" value="Enda"/>
+        <constructor-arg name="name" value="#{new String('Enda')}"/>
         <constructor-arg name="age" value="9" />
         <constructor-arg name="weight" value="15"/>
-        <constructor-arg name="height" value="90"/>
+        <constructor-arg name="height" value="#{new java.util.Random().nextInt(100,110)}"/>
         <constructor-arg name="locationAndPriceDog">
-            <map>
-                <entry key="Vitebsk" value="120"/>
-                <entry key="Minsk" value="360"/>
-                <entry key="Moscow" value="455"/>
-            </map>
+        <map>
+            <entry key="Vitebsk" value="120"/>
+            <entry key="Minsk" value="360"/>
+            <entry key="Moscow" value="455"/>
+        </map>
         </constructor-arg>
     </bean>
 
-    <bean id="bruno" class="com.kondratsenko.model.Dog" p:id="3" p:name="Bruno" p:age="8" p:weight="13" p:height="85">
+    <bean id="bruno" class="com.kondratsenko.model.Dog" p:id="3" p:name="#{new String('Bruno')}" p:age="8" p:weight="13" p:height="85">
         <property name="locationAndPriceDog">
             <map>
                 <entry key="Moscow" value="120"/>
@@ -83,7 +83,7 @@
         </property>
     </bean>
 
-    <bean id="jumbo" class="com.kondratsenko.model.Elephant" p:id="1" p:name="Jumbo" p:age="25" p:weight="1200" p:width="250">
+    <bean id="jumbo" class="com.kondratsenko.model.Elephant" p:id="1" p:name="#{new String('Jambo')}}" p:age="25" p:weight="1200" p:width="250">
         <property name="zooElephant">
             <set>
                 <value>London Zoo</value>

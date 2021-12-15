@@ -3,6 +3,8 @@ package com.kondratsenko.model;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 
 import java.util.List;
 
@@ -15,14 +17,16 @@ public class Zoo implements Printable{
     private String name;
     private List<Cat> catList;
     private List<Dog> dogList;
-    private Elephant katy;
+    @Autowired
+    @Qualifier("jumbo-qualifier")
+    private Elephant elephant;
 
     @Override
     public String toString() {
         return "Zoo " + "id=" + id + ", name='" + name + '\'' +
                 "\ncatList=" + catList +
                 "\ndogList=" + dogList +
-                "\nelephant=" + katy +
+                "\nelephant=" + elephant +
                 '}';
     }
 

@@ -12,6 +12,7 @@
        default-init-method="init" default-destroy-method="destroy">
 
     <context:property-placeholder location="cats.properties, dogs.properties, elephant.properties"/>
+    <context:annotation-config />
 
     <bean id="sonya" class="com.kondratsenko.model.Cat">
         <constructor-arg name="id" value="${sonya.id}"/>
@@ -58,10 +59,15 @@
 
 
     <bean id="jumbo" class="com.kondratsenko.model.Elephant" p:id="${jumbo.id}" p:name="${jumbo.name}" p:age="${jumbo.age}" p:weight="${jumbo.weight}"
-          p:width="${jumbo.width}" p:zooElephant="${jumbo.zooElephant}"/>
+          p:width="${jumbo.width}" p:zooElephant="${jumbo.zooElephant}" >
+        <qualifier value="jumbo-qualifier"/>
+    </bean>
+
 
     <bean id="katy" class="com.kondratsenko.model.Elephant" p:id="${katy.id}" p:name="${katy.name}" p:age="${katy.age}" p:weight="${katy.weight}"
-          p:width="${katy.width}" p:zooElephant="${katy.zooElephant}"/>
+          p:width="${katy.width}" p:zooElephant="${katy.zooElephant}">
+        <qualifier value="katy-qualifier"/>
+    </bean>
 
     <bean id="zoo" class="com.kondratsenko.model.Zoo" p:id="1" p:name="myZoo" autowire="byName" init-method="start" destroy-method="finish">
         <property name="catList">
